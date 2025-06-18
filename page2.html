@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Inventario</title>
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header>
+  <h1>Inventario</h1>
+</header>
+
+<nav class="navbar">
+  <div class="logo"></div>
+  <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+  <label for="menu-toggle" class="menu-icon">&#9776;</label>
+  <ul class="menu">
+    <li><a href="index.html">Log out</a></li>
+    <li><a href="add-stock.html">Agregar Productos</a></li>
+    <li><a href="#">Reporte</a></li>
+  </ul>
+</nav>
+
+<main class="inventory-layout">
+  <!-- Sidebar de filtros -->
+  <aside class="sidebar">
+    <h3>Filtrar por Categoría</h3>
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-category="all">
+        📦 Todos los Productos
+      </button>
+      <button class="filter-btn" data-category="limpieza">
+        🧽 Limpieza
+      </button>
+      <button class="filter-btn" data-category="hogar">
+        🏠 Hogar
+      </button>
+      <button class="filter-btn" data-category="comestibles">
+        🍎 Comestibles
+      </button>
+    </div>
+    
+    <div class="category-stats">
+      <h4>Estadísticas</h4>
+      <div class="stat-item">
+        <span class="stat-label">Total:</span>
+        <span class="stat-value" id="total-count">20</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Stock Bajo:</span>
+        <span class="stat-value warning" id="low-stock-stat">6</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Sin Stock:</span>
+        <span class="stat-value danger" id="out-stock-stat">3</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Contenedor principal de productos -->
+  <div class="products-container">
+    <div class="products-header">
+      <h2 id="category-display">Todos los Productos</h2>
+      <span class="product-count" id="visible-count">20 productos</span>
+    </div>
+    
+    <div class="gallery" id="products-gallery">
+      <!-- Productos de Limpieza -->
+      <section class="product" data-stock="25" data-category="limpieza">
+        <img src="https://images.pexels.com/photos/4239091/pexels-photo-4239091.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Detergente Líquido" />
+        <div class="stock-info">
+          <span class="stock-counter">25</span>
+          <span class="stock-label">en stock</span>
+        </div>
+        <h3>Detergente Líquido</h3>
+        <p>Detergente concentrado para ropa, 1L</p>
+        <div class="category-badge limpieza">🧽 Limpieza</div>
+      </section>
+      
+      <section class="product" data-stock="3" data-category="limpieza">
+        <img src="https://images.pexels.com/photos/4239013/pexels-photo-4239013.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Desinfectante" />
+        <div class="stock-info low-stock">
+          <span class="stock-counter">3</span>
+          <span class="stock-label">en stock</span>
+          <span class="low-stock-alert">⚠️ Stock bajo</span>
+        </div>
+        <h3>Desinfectante</h3>
+        <p>Desinfectante multiusos, 500ml</p>
+        <div class="category-badge limpieza">🧽 Limpieza</div>
+      </section>
+      
+      <section class="product" data-stock="15" data-category="limpieza">
+        <img src="https://images.pexels.com/photos/4239140/pexels-photo-4239140.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Jabón en Polvo" />
+        <div class="stock-info">
+          <span class="stock-counter">15</span>
+          <span class="stock-label">en stock</span>
+        </div>
+        <h3>Jabón en Polvo</h3>
+        <p>Jabón en polvo para lavadora, 2kg</p>
+        <div class="category-badge limpieza">🧽 Limpieza</div>
+      </section>
+      
+      <section class="product" data-stock="0" data-category="limpieza">
+        <img src="https://images.pexels.com/photos/4239151/pexels-photo-4239151.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Limpiador de Vidrios" />
+        <div class="stock-info out-of-stock">
+          <span class="stock-counter">0</span>
+          <span class="stock-label">en stock</span>
+          <span class="out-of-stock-alert">❌ Sin stock</span>
+        </div>
+        <h3>Limpiador de Vidrios</h3>
+        <p>Limpiador para cristales y espejos, 750ml</p>
+        <div class="category-badge limpieza">🧽 Limpieza</div>
+      </section>
+      
+      <section class="product" data-stock="8" data-category="limpieza">
+        <img src="https://images.pexels.com/photos/4239028/pexels-photo-4239028.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Esponjas" />
+        <div class="stock-info">
+          <span class="stock-counter">8</span>
+          <span class="stock-label">en stock</span>
+        </div>
+        <h3>Esponjas</h3>
+        <p>Pack de 6 esponjas para cocina</p>
+        <div class="category-badge limpieza">🧽 Limpieza</div>
+      </section>
+      
+      <section class="product" data-stock="2" data-category="limpieza">
+        <img src="https://images.pexels.com/photos/4239074/pexels-photo-4239074.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Papel Higiénico" />
+        <div class="stock-info low-stock">
+          <span class="stock-counter">2</span>
+          <span class="stock-label">en stock</span>
+          <span class="low-stock-alert">⚠️ Stock bajo</span>
+        </div>
+        <h3>Papel Higiénico</h3>
+        <p>Papel higiénico doble hoja, pack 12 rollos</p>
+        <div class="category-badge limpieza">🧽 Limpieza</div>
+      </section>
+
+      <!-- Productos de Hogar -->
+      <section class="product" data-stock="12" data-category="hogar">
+        <img src="https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Bombillas LED" />
+        <div class="stock-info">
+          <span class="stock-counter">12</span>
+          <span class="stock-label">en stock</span>
+        </div>
+        <h3>Bombillas LED</h3>
+        <p>Bombilla LED 9W luz cálida</p>
+        <div class="category-badge hogar">🏠 Hogar</div>
+      </section>
+      
+      <section class="product" data-stock="4" data-category="hogar">
+        <img src="https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Pilas AA" />
+        <div class="stock-info low-stock">
+          <span class="stock-counter">4</span>
+          <span class="stock-label">en stock</span>
+          <span class="low-stock-alert">⚠️ Stock bajo</span>
+        </div>
+        <h3>Pilas AA</h3>
+        <p>Pack de 4 pilas alcalinas AA</p>
+        <div class="category-badge hogar">🏠 Hogar</div>
+      </section>
+      
+      <section class="product" data-stock="7" data-category="hogar">
+        <img src="https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Velas Aromáticas" />
+        <div class="stock-info">
+          <span class="stock-counter">7</span>
+          <span class="stock-label">en stock</span>
+        </div>
+        <h3>Velas Aromáticas</h3>
+        <p>Vela aromática de vainilla, 200g</p>
+        <div class="category-badge hogar">🏠 Hogar</div>
+      </section>
+      
+      <section class="product" data-stock="1" data-category="hogar">
+        <img src="https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Cable USB" />
+        <div class="stock-info low-stock">
+          <span class="stock-counter">1</span>
+          <span class="stock-label">en stock</span>
+          <span class="low-stock-alert">⚠️ Stock bajo</span>
+        </div>
+        <h3>Cable USB</h3>
+        <p>Cable USB-C de 2 metros</p>
+        <div class="category-badge hogar">🏠 Hogar</div>
+      </section>
+      
+      <section class="product" data-stock="9" data-category="hogar">
+        <img src="https://images.pexels.com/photos/1080721/pexels-photo-1080721.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Toallas" />
+        <div class="stock-info">
+          <span class="stock-counter">9</span>
+          <span class="stock-label">en stock</span>
+        </div>
+        <h3>Toallas</h3>
+        <p>Toalla de baño 100% algodón</p>
+        <div class="category-badge hogar">🏠 Hogar</div>
+      </section>
+      
+      <section class="product" data-stock="0" data-category="hogar">
+        <img src="https://images.pexels.com/photos/1080696/pexels-photo-1080696.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Organizadores" />
+        <div class="stock-info out-of-stock">
+          <span class="stock-counter">0</span>
+          <span class="stock-label">en stock</span>
+          <span class="out-of-stock-alert">❌ Sin stock</span>
+        </div>
+        <h3>Organizadores</h3>
+        <p>Caja organizadora plástica con tapa</p>
+        <div class="category-badge hogar">🏠 Hogar</div>
+      </section>
+
+      <!-- Productos Comestibles -->
+      <section class="product" data-stock="20" data-category="comestibles">
+        <img src="https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Arroz" />
+        <div class="stock-info">
+          <span class="stock-counter">20</span>
+          <span class="stock-label">en stock</span>
+        </div>
+        <h3>Arroz</h3>
+        <p>Arroz blanco grano largo, 1kg</p>
+        <div class="category-badge comestibles">🍎 Comestibles</div>
+      </section>
+      
+      <section class="product" data-stock="5" data-category="comestibles">
+        <img src="https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Aceite de Cocina" />
+        <div class="stock-info low-stock">
+          <span class="stock-counter">5</span>
+          <span class="stock-label">en stock</span>
+          <span class="low-stock-alert">⚠️ Stock bajo</span>
+        </div>
+        <h3>Aceite de Cocina</h3>
+        <p>Aceite vegetal para cocinar, 1L</p>
+        <div class="category-badge comestibles">🍎 Comestibles</div>
+      </section>
+      
+      <section class="product" data-stock="14" data-category="comestibles">
+        <img src="https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Pasta" />
+        <div class="stock-info">
+          <span class="stock-counter">14</span>
+          <span class="stock-label">en stock</span>
+        </div>
+        <h3>Pasta</h3>
+        <p>Espaguetis de trigo, 500g</p>
+        <div class="category-badge comestibles">🍎 Comestibles</div>
+      </section>
+      
+      <section class="product" data-stock="3" data-category="comestibles">
+        <img src="https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Leche" />
+        <div class="stock-info low-stock">
+          <span class="stock-counter">3</span>
+          <span class="stock-label">en stock</span>
+          <span class="low-stock-alert">⚠️ Stock bajo</span>
+        </div>
+        <h3>Leche</h3>
+        <p>Leche entera UHT, 1L</p>
+        <div class="category-badge comestibles">🍎 Comestibles</div>
+      </section>
+      
+      <section class="product" data-stock="0" data-category="comestibles">
+        <img src="https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Pan" />
+        <div class="stock-info out-of-stock">
+          <span class="stock-counter">0</span>
+          <span class="stock-label">en stock</span>
+          <span class="out-of-stock-alert">❌ Sin stock</span>
+        </div>
+        <h3>Pan</h3>
+        <p>Pan de molde integral, 500g</p>
+        <div class="category-badge comestibles">🍎 Comestibles</div>
+      </section>
+      
+      <section class="product" data-stock="11" data-category="comestibles">
+        <img src="https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Huevos" />
+        <div class="stock-info">
+          <span class="stock-counter">11</span>
+          <span class="stock-label">en stock</span>
+        </div>
+        <h3>Huevos</h3>
+        <p>Cartón de 12 huevos frescos</p>
+        <div class="category-badge comestibles">🍎 Comestibles</div>
+      </section>
+      
+      <section class="product" data-stock="2" data-category="comestibles">
+        <img src="https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Azúcar" />
+        <div class="stock-info low-stock">
+          <span class="stock-counter">2</span>
+          <span class="stock-label">en stock</span>
+          <span class="low-stock-alert">⚠️ Stock bajo</span>
+        </div>
+        <h3>Azúcar</h3>
+        <p>Azúcar blanca refinada, 1kg</p>
+        <div class="category-badge comestibles">🍎 Comestibles</div>
+      </section>
+      
+      <section class="product" data-stock="8" data-category="comestibles">
+        <img src="https://images.pexels.com/photos/1435904/pexels-photo-1435904.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Sal" />
+        <div class="stock-info">
+          <span class="stock-counter">8</span>
+          <span class="stock-label">en stock</span>
+        </div>
+        <h3>Sal</h3>
+        <p>Sal de mesa yodada, 500g</p>
+        <div class="category-badge comestibles">🍎 Comestibles</div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<script src="inventory.js"></script>
+</body>
+</html>

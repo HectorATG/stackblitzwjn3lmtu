@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reportes</title>
+  <link rel="stylesheet" href="reportes.css">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<nav class="navbar">
+  <div class="logo"></div>
+  <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+  <label for="menu-toggle" class="menu-icon">&#9776;</label>
+  <ul class="menu">
+    <li><a href="index.html">Log out</a></li>
+    <li><a href="add-stock.html">Agregar Productos</a></li>
+    <li><a href="Reporte.html">reportes de ventas</a></li>
+  </ul>
+</nav>
+
+  <div class="filtro-fechas">
+    <label for="fecha-inicio">Desde:</label>
+    <input type="date" id="fecha-inicio" />
+    <label for="fecha-fin">Hasta:</label>
+    <input type="date" id="fecha-fin" />
+    <button onclick="filtrarFechas()">Filtrar</button>
+    <button onclick="resetearFiltro()">Mostrar Todo</button>
+  </div>
+
+  <h2>RF08 - Reporte de Entradas y Salidas</h2>
+  <table id="tabla-rf08">
+    <thead>
+      <tr>
+        <th>Tipo</th>
+        <th>Fecha</th>
+        <th>Cantidad</th>
+        <th>Costo Unitario</th>
+        <th>Costo Total</th>
+      </tr>
+    </thead>
+    <tbody>
+     
+    </tbody>
+  </table>
+
+  <h2>RF09 - Reporte Solo de Entradas</h2>
+  <table id="tabla-rf09">
+    <thead>
+      <tr>
+        <th>Fecha</th>
+        <th>Cantidad</th>
+        <th>Costo Unitario</th>
+        <th>Costo Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+  </table>
+
+  <script>
+    function filtrarFechas() {
+      const inicio = document.getElementById('fecha-inicio').value;
+      const fin = document.getElementById('fecha-fin').value;
+      if (!inicio || !fin) return;
+
+      const fechaInicio = new Date(inicio);
+      const fechaFin = new Date(fin);
+
+      ['tabla-rf08', 'tabla-rf09'].forEach(tablaId => {
+        const filas = document.querySelectorAll(`#${tablaId} tbody tr`);
+        filas.forEach(fila => {
+          const fechaTexto = fila.children[1].innerText;
+          const fecha = new Date(fechaTexto);
+          fila.style.display = (fecha >= fechaInicio && fecha <= fechaFin) ? '' : 'none';
+        });
+      });
+    }
+
+    function resetearFiltro() {
+      document.getElementById('fecha-inicio').value = '';
+      document.getElementById('fecha-fin').value = '';
+      document.querySelectorAll('tbody tr').forEach(fila => fila.style.display = '');
+    }
+  </script>
+
+</body>
+</html>
